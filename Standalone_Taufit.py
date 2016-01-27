@@ -33,6 +33,11 @@ filepath = args.filename
 pulseperiod = args.period
 count = args.counts
 
+newpath = r'./Plots' 
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
+
+
 pulsar, nch, nbins, lm_rms = dri.read_header(filepath)
 
 print "Pulsar name: %s" %pulsar
