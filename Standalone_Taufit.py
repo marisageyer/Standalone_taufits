@@ -79,7 +79,7 @@ for i in range(nch):
     
     plotname = '%s_Profile_fit_%d_%.1fMHz.png'  % (pulsar,i,freqm)
     print 'Saved %s in Plots' %plotname
-    picpath = "/Users/marisa/Documents/PhD/GitHub_Scattering/BusyWeek/Plots"
+    picpath = newpath
     fileoutput = os.path.join(picpath,plotname)
     plt.savefig(fileoutput, dpi=150)
 
@@ -173,10 +173,10 @@ plt.legend()
 
 plotnametau = 'Tau_fit_%s.png'  % (pulsar)
 print 'Saved %s in Plots' %plotnametau
-picpathtau = "/Users/marisa/Documents/PhD/GitHub_Scattering/BusyWeek/Plots"
+picpathtau = newpath
 fileoutputtau = os.path.join(picpathtau,plotnametau)
 plt.savefig(fileoutputtau, dpi=150)
 
 
-plt.show()
+#plt.show()
 
