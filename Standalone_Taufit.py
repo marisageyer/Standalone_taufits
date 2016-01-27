@@ -156,21 +156,22 @@ specfitdata = resultpowdata.best_values['k']
 specfitspread = resultpow.best_values['k']
 
 specdata_err= resultpowdata.params['k'].stderr
-specspread_err = resultpow.params['k'].stderr
+specspread_err = resultpow.params['k'].stderr*np.sqrt(float(count))
 
 print 'from data: alpha = %.4f' %specfitdata
 print 'from noise rms spread: alpha = %.4f' %specfitspread
 
 plt.figure()
-plt.plot(1000*e_freqms,e_besttaussec,'ro',label=r'$\tau$ spread from noise rms')
-plt.plot(1000*freqms,obtainedtausec,'c*',markersize=9.0,label=r'$\tau$ from data')
+plt.plot(1000.*e_freqms,e_besttaussec,'ro',label=r'$\tau$ spread from noise rms')
+plt.plot(1000.*freqms,obtainedtausec,'c*',markersize=9.0,label=r'$\tau$ from data')
+plt.plot(1000.*e_freqms, resultpow.best_fit, 'r-')
+plt.plot(1000.*freqms, resultpowdata.best_fit, 'c-')
 plt.title(r'DATA: $\alpha = %.2f \pm %.2f$,  NOISE SPREAD:  $\alpha = %.2f \pm %.2f$' %(specfitdata,specdata_err,specfitspread,specspread_err), fontsize=18)
 plt.xticks(fontsize=14)
 plt.yticks(fontsize=14)
 plt.xlabel(r'$\nu$ MHz',fontsize=16)
 plt.ylabel(r'$\tau$ (sec)',fontsize=16)
 plt.legend()
-
 plotnametau = 'Tau_fit_%s.png'  % (pulsar)
 print 'Saved %s in Plots' %plotnametau
 picpathtau = newpath
